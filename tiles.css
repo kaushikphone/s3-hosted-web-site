@@ -1,0 +1,666 @@
+.container-fluid.centerAlignContainer{
+  position: absolute;
+  top:-30px;
+}
+.customisied{
+	max-width: 1366px;
+	max-height: 768px;
+	overflow: hidden;
+}
+.numberz{
+	position: absolute;
+	width:1366px;
+	height:120px;
+	display:inline-block;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+
+
+}
+.navbar-header-logo{
+	position: absolute;
+	float: right!important;
+}
+.responsiveImg{
+	width: 250px;
+    padding-top: 20px;
+    height: auto;
+    float: left;
+}
+.logout{
+	float: left !important;
+    padding-left: 1150px;
+    padding-top: 40px;
+}
+.txtcolor{
+	color:white;
+	position: absolute;
+	width:152px;
+
+}
+.heightImg{
+	width: 180px;
+    height: auto;
+    position: absolute;
+    padding-left: 154px;
+}
+a{
+	color:#dc6900 !important;
+}
+.IconImg{
+	width:25px;
+	height:auto;
+}
+.xyz{
+	padding-left: 20px;
+    padding-top: 130px !important;
+}
+.lftpannel{
+	position:absolute;
+	width:750px;
+	width:auto;
+}
+.logStyle{
+	padding-left:20px;
+}
+.lgnbtn{
+
+	background-color: #dc6900;
+	height:30px;
+	width:100px;
+    border: none;
+    color: white;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
+.lgnbtn:hover{
+	background-color: #ffb600;
+}
+input[type=text],
+input[type=password] {
+    border: 1px solid #968c6d;
+    border-radius: 2px;
+	width:210px;
+}
+input[type=text]:hover,
+input[type=password]:hover {
+    border: 1px solid #dc6900;
+}
+.lndcustomisied{
+	background-image: url("../pic/LndBG.png");
+}
+/*.tiles{
+    padding-top: 280px;
+    position: absolute;
+    padding-left: 125px;
+    padding-right: 100px;
+    display: inline-flex;
+}*/
+.heading_report{
+    margin-top: -20px;
+    margin-bottom: 25px;
+}
+.tiles {
+    padding-top: 0;
+    padding-left: 0;
+    padding-right: 0;
+    display: inline-flex;
+    margin: 0 auto;
+    width: 100%;
+}
+.tileWhite{
+	cursor: pointer;
+    background-color: white;
+    height: 250px;
+    width: 345px;
+    border-radius: 5px;
+    margin-left: 14px;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.tileWhite:hover{
+    text-decoration: none;
+    background-color: white;
+    height: 250px;
+    width: 345px;
+    border-radius: 5px;
+    margin-left: 14px;
+	box-shadow: 0 10px 20px 0 rgba(0,0,0,0.4), 0 9px 30px 0 rgba(0,0,0,0.3);
+}
+.iconStyle{
+	height:45px;
+	width:45px;
+	margin: 60px 50px 50px 145px;
+  font-size: 49px;
+}
+.textcolour{
+    font-family: Georgia;
+    width: 175px;
+    word-wrap: break-word;
+    font-size: 16px;
+    font-weight: bold;
+    color: #dc6900;
+    margin: -30px 10px 0px 80px;
+    text-align: center;
+}
+.underText{
+	width: 260px;
+    word-wrap: break-word;
+    font-family: Georgia;
+    font-size: 13px;
+    font-weight: normal;
+    color: #565555;
+    margin: 14px 0px 0px 40px;
+    text-align: center;
+}
+.lvlBox{
+	border-color: #5e5e5e;
+    width: 400px;
+    background: #5e5e5e;
+    height: 42px;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.lvlBoxheader{
+	font-family: Georgia;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    margin: 0px 0px 0px 18px;
+    padding-top: 12px;
+    text-align: left;
+}
+.span2{
+	margin-top: 10px;
+    width: 400px;
+    height: 470px;
+    border: 1px solid #5e5e5e;
+    float: left;
+    position: absolute;
+}
+.span10{
+	margin-top: 10px;
+    width: 900px;
+    height: 470px;
+    border: 1px solid #5e5e5e;
+    position: absolute;
+    margin-left: 410px;
+}
+.lvlResultBox{
+	border-color: #dc6900;
+    background: #dc6900;
+    height: 42px;
+	box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+}
+.innerLvlBox{
+	border-color: #5e5e5e;
+    width: 398px;
+    background: white;
+    height: 42px;
+    box-shadow: 0 0px 4px 0 rgba(0,0,0,0.1), 0 0px 4px 0 rgba(0,0,0,0.15);
+}
+.innerLvlBox:hover{
+	 background:#dc6900;
+}
+.innerText:hover{
+	 color: white;
+}
+.innerText{
+	font-family: Arial;
+    font-size: 14px;
+    font-weight: normal;
+    color: #5e5e5e;
+    margin: 0px 0px 0px 18px;
+    padding-top: 12px;
+    text-align: left;
+}
+.coustomContainer{
+	width: 400px;
+    height: 470px;
+	overflow:auto;
+}
+.headerText{
+	position: absolute;
+    font-family: Georgia;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5e5e;
+    margin: -18px 0px 0px 1161px;
+    text-align: left;
+}
+.innerTextBox{
+    width: 750px;
+    padding: 4px;
+    margin: 10px;
+}
+.innermainTextBox{
+	font-family: Arial;
+	color:#dc6900;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+}
+.innersubTextBox{
+	font-family: Arial;
+	color:#5e5e5e;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+}
+.customToggle{
+	width: 100px;
+    height: 40px;
+    background: white;
+    position:absolute;
+}
+.dropdown{
+	float: right;
+    margin-top: -38px;
+}
+.subbtn{
+	float: right;
+	background-color:#ffb600;
+    position: absolute;
+    margin-top: -27px;
+    height: 42px;
+    width: 115px;
+    border: none;
+    color: white;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+    text-align: center;
+    font-size: 16px;
+}
+.subbtn:hover{
+	background-color:#5e5e5e;
+}
+.tableSize{
+    width: 1328px;
+    height: 650px;
+    padding-left: 20px;
+    padding-top: 20px;
+}
+.rowBgText{
+	background-color: #dc6900;
+    color: white;
+    font-family: Georgia;
+}
+.col-sm-6{
+	float: right !important;
+	position: relative !important;
+}
+
+.modal-header{
+	color: white!important;
+    background-color: #dc6900!important;
+}
+#drop{
+	background-color: #fff7dc;
+	text-align: center;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: bold;
+    color: #7f858a;
+}
+#drop a {
+    background-color: #fff7dc;
+    padding: 12px 26px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+    cursor: pointer;
+    display: block;
+    /*margin-top: 12px;*/
+    line-height: 1;
+}
+#drop a:hover {
+    background-color: white;
+}
+#drop input {
+    display:none;
+}
+.fileupload-buttonbar{
+	    padding-top: 20px !important;
+}
+.modal-footer{
+	background-color: white !important;
+}
+ol.upload-files-list {
+    /*border: 1px solid #b9b9b9;*/
+    margin: 0;
+    padding: 0 10px 10px 10px;
+    border-left: none;
+    border-right: none;
+    overflow: hidden;
+}
+ol.upload-files-list .upload-file:last-child {
+    border-bottom: 1px solid #ddd;
+}
+ol.upload-files-list .upload-file.template-download .error-col {
+    float: right;
+``}
+ol.upload-files-list .upload-file.template-upload .error-col {
+    float: left;
+}
+ol.upload-files-list .upload-file.template-upload .filesize-col{
+    float: left;
+    padding-right: 5px;
+    padding-left: 5px;
+    width: 80px;
+}
+ol.upload-files-list .upload-file {
+    list-style: none;
+    position: relative;
+    margin: 0;
+    height: 35px;
+    line-height: 35px;
+    border-top: 1px solid #ddd;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    vertical-align: bottom;
+}
+ol.upload-files-list .upload-file .upload-file-info {
+    vertical-align: baseline;
+    border-collapse: collapse;
+    /*width: 100%;*/
+    height: 35px;
+    position: absolute;
+    top: 0;
+    left: 10px;
+    right: 10px;
+}
+ol.upload-files-list .upload-file .upload-progress-bar {
+    height: 33px;
+    padding: 0;
+    margin: 0;
+}
+.upload-file.complete .upload-progress-bar {
+    background-color: #ebffd9;
+}
+.upload-file.error .upload-progress-bar {
+    background-color: #FD9F9F;
+}
+.upload-file .upload-progress-bar {
+    border-radius: 0;
+    background-color: #e9f4ff;
+}
+.upload-files-list .upload-file .upload-file-info .filename-col {
+    float: left;
+    width: 310px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.upload-files-list .upload-file .upload-file-info div {
+    display: block;
+}
+.upload-files-list .upload-file .upload-file-info .status-col {
+    float: right;
+
+}
+.upload-files-list .upload-file .upload-file-info .actions-col {
+    float: right;
+}
+.field-validation-error {
+    color: red;
+}
+.fileupload-buttonbar {
+    padding: 10px;
+}
+/*Form Styling*/
+<style type="text/css">
+.form-style-7{
+    max-width:400px;
+    margin:50px auto;
+    background:#fff;
+    border-radius:2px;
+    padding:20px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+.form-style-7 h1{
+    display: block;
+    text-align: center;
+    padding: 0;
+    margin: 0px 0px 20px 0px;
+    color: #5C5C5C;
+    font-size:x-large;
+}
+.form-style-7 ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+.form-style-7 li{
+    display: block;
+    padding: 9px;
+    border:1px solid #DDDDDD;
+    margin-bottom: 30px;
+    border-radius: 3px;
+}
+.form-style-7 li:last-child{
+    border:none;
+    margin-top: -40px;
+    text-align: center;
+}
+.form-style-7 li > label{
+    display: block;
+    float: left;
+    margin-top: -22px;
+    background: #FFFFFF;
+    height: 22px;
+    padding: 2px 5px 2px 5px;
+    color: #B9B9B9;
+    font-size: 14px;
+    overflow: hidden;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.form-style-7 input[type="text"],
+.form-style-7 input[type="date"],
+.form-style-7 input[type="datetime"],
+.form-style-7 input[type="email"],
+.form-style-7 input[type="number"],
+.form-style-7 input[type="search"],
+.form-style-7 input[type="time"],
+.form-style-7 input[type="url"],
+.form-style-7 input[type="password"],
+.form-style-7 textarea,
+.form-style-7 select
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    width: 100%;
+    display: block;
+    outline: none;
+    border: none;
+    height: 25px;
+    line-height: 25px;
+    font-size: 12px;
+    padding: 0;
+    font-family: Arial;
+}
+.form-style-7 input[type="text"]:focus,
+.form-style-7 input[type="date"]:focus,
+.form-style-7 input[type="datetime"]:focus,
+.form-style-7 input[type="email"]:focus,
+.form-style-7 input[type="number"]:focus,
+.form-style-7 input[type="search"]:focus,
+.form-style-7 input[type="time"]:focus,
+.form-style-7 input[type="url"]:focus,
+.form-style-7 input[type="password"]:focus,
+.form-style-7 textarea:focus,
+.form-style-7 select:focus
+{
+}
+.form-style-7 li > span{
+    background: #F3F3F3;
+    display: block;
+    padding: 3px;
+    margin: 0 -9px -9px -9px;
+    text-align: center;
+    color: #C0C0C0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+}
+.form-style-7 textarea{
+    overflow-y: scroll;
+    height: 25px;
+	resize:none;
+}
+.form-style-7 input[type="submit"],
+.form-style-7 input[type="button"]{
+    background: #dc6900;
+	padding: 6px 20px 10px 20px;
+    color: white;
+	width:380px;
+	height:35px;
+}
+.form-style-7 input[type="submit"]:hover,
+.form-style-7 input[type="button"]:hover{
+    background: #ffb600;
+    color:#fff;
+}
+    .margin-top-50 {
+	margin-top: 50px;}
+    /*Filter START*/
+.filterable {
+    margin-top: 15px;
+}
+.filterable .panel-heading .pull-right {
+    margin-top: -20px;
+}
+.filterable .filters input[disabled] {
+    background-color: transparent;
+    border: none;
+    cursor: auto;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+.filterable .filters input[disabled]::-webkit-input-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]::-moz-placeholder {
+    color: #333;
+}
+.filterable .filters input[disabled]:-ms-input-placeholder {
+    color: #333;
+}
+/*Filter END*/
+
+.subbtnN{
+	margin-left: -98px;
+    float: right;
+    background-color: #ffb600;
+    position: absolute;
+    margin-top: -11px;
+    height: 34px;
+    width: 95px;
+    border: none;
+    color: white;
+    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.1), 0 4px 15px 0 rgba(0,0,0,0.15);
+    text-align: center;
+    font-size: 16px;
+}
+.subbtnN:hover{
+	background-color:ffb600;
+}
+.headerTextKR{
+	position: absolute;
+    font-family: Georgia;
+    font-size: 16px;
+    font-weight: bold;
+    color: #5e5e5e;
+    margin: -18px 0px 0px 1134px;
+}
+/*Repository Table*/
+.RepositoryTableBG{
+	background-color: #5e5e5e;
+    color: white;
+    font-family: Georgia;
+}
+/*.fixedHeader{
+	position:fixed;
+}*/
+.glyphicon-trash:hover{
+	color:#dc6900;
+	cursor: pointer;
+}
+.glyphicon-list:hover{
+	color:#dc6900;
+	cursor: pointer;
+}
+/* clauseModal Content */
+.modal{
+	display: block;
+    padding-right: 17px;
+    padding-top: 200px;
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The clauseModal Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.disabledbutton {
+    pointer-events: none;
+    opacity: 0.4;
+}
+
+.innerLvlMainBox {
+	height: 250px;
+	overflow: scroll;
+}
+
+/* Loader Icon */
+/* Start by setting display:none to make this hidden.
+   Then we position it in relation to the viewport window
+   with position:fixed. Width, height, top and left speak
+   for themselves. Background we set to 80% white with
+   our animation centered, and no-repeating */
+.modalLoader {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background: rgba( 255, 255, 255, .8 )
+                url('../pic/ajax-loader-circle.gif')
+                50% 50%
+                no-repeat;
+}
+
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modalLoader {
+    display: block;
+}
+
+
+/* hight word */
+
+.highlight { background-color: yellow }

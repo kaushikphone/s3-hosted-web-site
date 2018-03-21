@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KKR Investment Report</title>
+<meta charset="utf-8">
+<!--initialize scripts-->
+<script src="Scripts/jquery-1.11.0.min.js"></script>
+<script src="Scripts/jquery.dataTables.min.js"></script>
+<script src="Scripts/dataTables.buttons.min.js"></script>
+<script src="Scripts/buttons.flash.min.js"></script>
+<script src="Scripts/jszip.min.js"></script>
+<script src="Scripts/pdfmake.min.js"></script>
+<script src="Scripts/vfs_fonts.js"></script>
+<script src="Scripts/buttons.html5.min.js"></script>
+<script src="Scripts/buttons.print.min.js"></script>
+<!--initialize scripts-->
+<!--stylesheet initialization-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="Resources/bootstrap.min.css">
+<link rel="stylesheet" href="Resources/jquery.dataTables.min.css">
+<link rel="stylesheet" href="Resources/buttons.dataTables.min.css">
+<!--<script type="text/javascript" src="app.js"></script>-->
+<link rel="stylesheet" href="app.css" />
+<link rel="stylesheet" href="tiles.css" />
+<!--aws stylesheet-->
+<link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="components/toastr/toastr.min.css">
+<!--aws stylesheet-->
+<!-- Aws JavaScript Libs -->
+<script src="components/angular/angular.js"></script>
+<script src="components/toastr/toastr.min.js"></script>
+<script src="components/aws-sdk-js/dist/aws-sdk.min.js"></script>
+<!--<script src="https://sdk.amazonaws.com/js/aws-sdk-2.162.0.min.js"></script>-->
+<!-- Aws JavaScript Libs -->
+<!-- Our JavaScript -->
+<!--<script src="Scripts/awsJS/application.js"></script>
+<script src="Scripts/awsJS/controllers.js"></script>
+<script src="Scripts/awsJS/directives.js"></script>-->
+</head>
+<body style="min-height:100%; margin:10px;" class="indexBody">
+<div class="container-fluid">
+  <!--logo and year dropdown-->
+  <div class="col-lg-3">
+    <a href="javascript:void(0)" class="pad30 pull-left">
+                            <figure>
+                                <img src="Images/PwcLogo.PNG" class="img-responsive">
+                            </figure>
+                        </a>
+  </div>
+  <!--logo and year dropdown-->
+</div>
+<div class="container-fluid centerAlignContainer">
+  <div class="tiles">
+		<a class="tileWhite" id="openUpload" href="fileupload.html">
+      <i class="fa fa-upload iconStyle" aria-hidden="true"></i>
+			<!--<img src="../pic/uploadScn.png" class="iconStyle">-->
+			<h4 class="textcolour">Upload Documents</h4>
+			<h2 class="underText">Click to upload source data file(s) to view report(s)</h2>
+		</a>
+		<a class="tileWhite" id="scannedListBtn" href="report.html">
+       <i class="fa fa-bar-chart iconStyle" aria-hidden="true"></i>
+			<h4 class="textcolour">My Reports</h4>
+			<h2 class="underText">Click to see the report(s) uploaded</h2>
+
+		</a>
+		<a class="tileWhite" id="myBtn" href="jobStatus.html">
+      <i class="fa fa-user iconStyle" aria-hidden="true"></i>
+			<h4 class="textcolour">Administration</h4>
+			<h2 class="underText">Click to add keyword for future use</h2>
+			<h2 class="underText">( Coming Soon )</h2>
+		</a>
+
+	</div>
+
+</div>
+<script src="Scripts/bootstrap.js" type="text/javascript" ></script>
+</body>
+</html>

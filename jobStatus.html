@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>KKR PRG GAAP Investment Report</title>
+<meta charset="utf-8">
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+<!--initialize scripts-->
+<script src="Scripts/jquery-1.11.0.min.js"></script>
+<script src="Scripts/jquery.dataTables.min.js"></script>
+<script src="Scripts/dataTables.buttons.min.js"></script>
+<script src="Scripts/buttons.flash.min.js"></script>
+<script src="Scripts/jszip.min.js"></script>
+<script src="Scripts/pdfmake.min.js"></script>
+<script src="Scripts/vfs_fonts.js"></script>
+<script src="Scripts/buttons.html5.min.js"></script>
+<script src="Scripts/buttons.print.min.js"></script>
+<!--initialize scripts-->
+<!--stylesheet initialization-->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="Resources/bootstrap.min.css">
+<link rel="stylesheet" href="Resources/jquery.dataTables.min.css">
+<link rel="stylesheet" href="Resources/buttons.dataTables.min.css">
+<link rel="stylesheet" href="app.css" />
+<!--aws stylesheet-->
+<link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="components/toastr/toastr.min.css">
+<!--aws stylesheet-->
+<script src="app/aws-cognito-sdk.min.js"></script>
+<script src="app/amazon-cognito-identity.min.js"></script>
+<script src="app/aws-sdk-2.161.0.min.js"></script>
+<!--aws api client external js file-->
+<script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+<script type="text/javascript" src="lib/url-template/url-template.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+<script type="text/javascript" src="model/apigClient.js"></script>
+
+<script src="app/aes.js"></script>
+<script src="app/pbkdf2.js"></script>
+<script src="app/global.js"></script>
+<script src="app/encryptDecrypt.js"></script>
+
+<script type="text/javascript" src="model/dataobject.js"></script>
+<script src="app/ForceLoggedIn.js"></script>
+<script type="text/javascript" src="app/jobStatus.js"></script>
+<script type="text/javascript" src="Scripts/moment.js"></script>
+<!--export to excel format-->
+<!--<script type="text/javascript" src="exportExcel/tableExport.js"></script>
+<script type="text/javascript" src="exportExcel/jquery.base64.js"></script>-->
+<script src="components/toastr/toastr.min.js"></script>
+<!--export to excel format-->
+<!--aws api client external js file-->
+<!--Bower Json File-->
+<!--<script src="app/excellentexport.js"></script>-->
+<!--<script src="bower_components/angular/angular.js"></script>-->
+<!--<script src="app/excelexportjs.js"></script>-->
+<!--<script src="bower_components/json-export-excel/src/json-export-excel.js"></script>-->
+<!--<script src="bower_components/file-saver/FileSaver.js"></script>-->
+<!--Bower Json File-->
+</head>
+<body style="min-height:100%; margin:10px;">
+<!--s3 uploaded modal window-->
+<div class="fixedModalbarcolumn"></div>
+<div role="dialog" class="modalBarPosition" id="loadingSymbol">
+  <div class="modal-dialog" style="width: 55%">
+      <div class="modal-content edwloading">
+          <div class="modal-body edwloadingPad">
+            <div class="edwload-loader"></div></div>
+        </div>
+</div>
+</div>
+<!--s3 uploaded modal window-->
+<!--Job Status mangement-->
+<div id="ReportUsageModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Report Usage</h4>
+      </div>
+      <div class="modal-body">
+        <table id="ReportUserManagement" class="display table table-bordered" ></table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Job Status mangement-->
+<!--User list modal-->
+<div id="UserListModel" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">All Users</h4>
+      </div>
+      <div class="modal-body">
+        <table id="UserListManagement" class="display table table-bordered" ></table>
+      </div>
+    </div>
+  </div>
+</div>
+<!--User list modal-->
+<!--User Modal-->
+<div id='UserModal' class='modal fade' role='dialog' data-backdrop="static" data-keyboard="false">
+<div class='modal-dialog'>
+  <div class='modal-content'>
+    <div class='modal-header'>
+      <button type='button' class='close' data-dismiss='modal'>&times;</button>
+      <h4 class='modal-title'>Create New User</h4>
+    </div>
+    <div class='modal-body'>
+      <form action="" method="post" id="UserValidityForm" onsubmit="return SignUpNewUser()">
+          <div class="form-group">
+              <label for="email">Email address:</label>
+              <input type="email" class="form-control" id="Useremail" required>
+          </div>
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+              <input type="password" class="form-control" id="Userpwd" required>
+          </div>
+          <button type="submit" class="btn btn-danger" title="Create User">Create User</button>
+     </form>
+     <form id="UserVerifiedId" action="" method="post" class="hide" onsubmit="return UserVerification()">
+       <div class="form-group">
+           <label for="UserNameVerified">Enter Email or User Name:</label>
+           <input type="text" class="form-control" id="EmailIdVerfied" required>
+       </div>
+       <div class="form-group">
+           <label for="CodeVerfy">Enter Verification Code:</label>
+           <input type="number" class="form-control" id="CodeVerfy" required>
+       </div>
+        <button type="submit" class="btn btn-danger" title="Verify User">Verify User</button>
+     </form>
+    </div>
+  </div></div>
+</div>
+<!--User Modal-->
+<!--modal window opened-->
+<div id="reportModal" class="modal fade" role="dialog" data-backdrop="static" data-keyboard="false">
+  <div class="modal-dialog" style="width:52%">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Data Load Status</h4>
+      </div>
+      <div class="modal-body">
+        <!--bind table here-->
+				<table id="dataLoadStatus" class="display table table-bordered" ></table>
+        <table id="dataLoadExportToexcel" class="display table table-bordered hide"></table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!--modal window opened-->
+<div class="container-fluid">
+  <!--logo and year dropdown-->
+  <div class="col-lg-3">
+    <a href="javascript:void(0)" class="pad30 pull-left">
+                            <figure>
+                                <img src="data:image/png;base64,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" class="img-responsive" style="margin-bottom:20px;">
+                            </figure>
+                        </a>
+  </div>
+  <div class="col-lg-9 pull-right signOutJobStatusAlignMent">
+    <a href="javascript:void(0)" class="pull-right" onclick="LogOutScreen();" title="Sign out">
+        <i class="fa fa-sign-out signOutSign" aria-hidden="true"></i>
+    </a>
+  </div>
+  <!--logo and year dropdown-->
+  <a class="pull-left" style="margin-top:0; clear:left" href="javascript:void(0)" title="Back" onclick="window.history.back()"><i class="fa fa-arrow-left backiconHolder" aria-hidden="true"></i></a>
+	<h2 class='pull-left' style="margin-top:0">Job Status Report</h2>
+  <div class='form-group pull-right marginRight'>
+  <a id="CreateNewUserId" href="javascript:void(0)" class="btn btn-danger hide" onclick="CreateNewUser()" title="Create User">Create User</a>
+  <a href="javascript:void(0)" id="UserList" class="btn btn-danger" onclick="UserList()" title="User List">User List</a>
+  <a href="javascript:void(0)" id="UserList" class="btn btn-danger" onclick="ReportUsage()" title="Report Usage">Report Usage</a>
+  <a href="javascript:void(0)" class="btn btn-danger" onclick="OpenReport()" title="Data Load Status">Data Load Status</a>
+</div>
+<!--json to excel download identifyer-->
+<!--json to excel download identifyer-->
+<div id="_table">
+	<table id="jobStatusReport" class="display table table-bordered" >
+    </table>
+    <table id="jobRun" class="display table table-bordered"></table>
+</div>
+</div>
+<script src="Scripts/bootstrap.js" type="text/javascript" ></script>
+</body>
+</html>

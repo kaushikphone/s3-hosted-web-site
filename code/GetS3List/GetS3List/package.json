@@ -1,0 +1,16 @@
+{
+  "name": "gets3list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "aws-sdk": "^2.163.0",
+    "underscore": "^1.8.3",
+    "util": "^0.10.3"
+  }
+}

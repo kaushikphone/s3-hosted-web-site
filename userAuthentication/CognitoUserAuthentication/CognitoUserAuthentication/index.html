@@ -1,0 +1,106 @@
+<html>
+<head>
+<script src="C:\Office\Projects\2017\KKR\CognitoUserAuthentication\js\aws-cognito-sdk.min.js"></script>
+<script src="C:\Office\Projects\2017\KKR\CognitoUserAuthentication\js\amazon-cognito-identity.min.js"></script>
+<!-- optional: only if you use other AWS services -->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.161.0.min.js"></script>
+<title>
+A Simple HTML Document
+</title>
+<script>
+ var poolData = {
+        UserPoolId : 'us-east-1_8gW1C7PWI', // Your user pool id here
+        ClientId : '78tpfsbdil9292r5hcihusnmia' // Your client id here
+    };
+	
+  var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+
+    var attributeList = [];
+
+    var dataEmail = {
+        Name : 'email',
+        Value : 'turjachaudhuri@gmail.com'
+    };
+
+    var dataPhoneNumber = {
+        Name : 'phone_number',
+        Value : '7890588526'
+    };
+    var attributeEmail = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataEmail);
+    var attributePhoneNumber = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserAttribute(dataPhoneNumber);
+
+    attributeList.push(attributeEmail);
+    //attributeList.push(attributePhoneNumber);
+
+	/*
+    userPool.signUp('turjachaudhuri@gmail.com', 'Password@1234', attributeList, null, function(err, result){
+        if (err) {
+            alert(err);
+            return;
+        }
+        cognitoUser = result.user;
+        console.log('user name is ' + cognitoUser.getUsername());
+    });*/
+	
+	var userPool = new AWSCognito.CognitoIdentityServiceProvider.CognitoUserPool(poolData);
+    var userData = {
+        Username : 'turjachaudhuri@gmail.com',
+        Pool : userPool
+    };
+
+    var cognitoUser = new AWSCognito.CognitoIdentityServiceProvider.CognitoUser(userData);
+    /*
+	cognitoUser.confirmRegistration('493228', true, function(err, result) {
+        if (err) {
+            alert(err);
+            return;
+        }
+        console.log('call result: ' + result);
+    });*/
+	
+	var authenticationData = {
+        Username : 'turjachaudhuri@gmail.com',
+        Password : 'Password@1234',
+    };
+    var authenticationDetails = new AWSCognito.CognitoIdentityServiceProvider.AuthenticationDetails(authenticationData);
+	
+	cognitoUser.authenticateUser(authenticationDetails, {
+        onSuccess: function (result) {
+            console.log('access token + ' + result.getAccessToken().getJwtToken());
+
+            //POTENTIAL: Region needs to be set if not already set previously elsewhere.
+            AWS.config.region = 'us-east-1';
+
+            AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+                IdentityPoolId : 'us-east-1:2a8289cc-4be6-43af-8981-6a431bec245a', // your identity pool id here
+                Logins : {
+                    // Change the key below according to the specific region your user pool is in.
+                    'cognito-idp.us-east-1.amazonaws.com/us-east-1_8gW1C7PWI' : result.getIdToken().getJwtToken()
+                }
+            });
+            
+            //refreshes credentials using AWS.CognitoIdentity.getCredentialsForIdentity()
+            AWS.config.credentials.refresh((error) => {
+                if (error) {
+                     console.error(error);
+                } else {
+                     // Instantiate aws sdk service objects now that the credentials have been updated.
+                     // example: var s3 = new AWS.S3();
+                     console.log('Successfully logged!');
+                }
+            });
+        },
+
+        onFailure: function(err) {
+            alert(err);
+        },
+
+    });
+</script>
+
+</head>
+<body>
+<p>This is a very simple HTML document</p>
+<p>It only has two paragraphs</p>
+</body>
+</html>

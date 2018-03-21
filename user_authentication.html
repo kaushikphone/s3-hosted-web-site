@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Signin</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+<!--initialize scripts-->
+<script src="Scripts/jquery-1.11.0.min.js"></script>
+<script src="app/aws-cognito-sdk.min.js"></script>
+<script src="app/amazon-cognito-identity.min.js"></script>
+<script src="app/aws-sdk-2.161.0.min.js"></script>
+<!--initialize scripts-->
+<!--stylesheet initialization-->
+<link rel="stylesheet" href="Resources/bootstrap.min.css">
+<link rel="stylesheet" href="Resources/jquery.dataTables.min.css">
+<link rel="stylesheet" href="Resources/buttons.dataTables.min.css">
+<!--<script type="text/javascript" src="app.js"></script>-->
+<script type="text/javascript" src="lib/axios/dist/axios.standalone.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/hmac-sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/rollups/sha256.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/hmac.js"></script>
+<script type="text/javascript" src="lib/CryptoJS/components/enc-base64.js"></script>
+<script type="text/javascript" src="lib/url-template/url-template.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/sigV4Client.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/apiGatewayClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/simpleHttpClient.js"></script>
+<script type="text/javascript" src="lib/apiGatewayCore/utils.js"></script>
+<script type="text/javascript" src="model/apigClient.js"></script>
+<!--<script type="text/javascript" src="app/jquery.validate.js"></script>-->
+<script src="app/aes.js"></script>
+<script src="app/pbkdf2.js"></script>
+<script src="app/global.js"></script>
+<script src="app/taffy.js"></script>
+<script src="app/encryptDecrypt.js"></script>
+<script src="model/dataobject.js"></script>
+<script src="app/authentication.js"></script>
+
+<link rel="stylesheet" href="app.css" />
+<!--aws stylesheet-->
+<link rel="stylesheet" href="components/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="components/toastr/toastr.min.css">
+<script src="components/toastr/toastr.min.js"></script>
+<style type="text/css">
+  .fixedModalbarcolumn{
+    display: none;
+  }
+  #loadingSymbol{
+    display: none;
+  }
+</style>
+</head>
+<body class="userAuthenticatedPage">
+<div class="container-fluid">
+  <!--loader defination-->
+  <div class="fixedModalbarcolumn"></div>
+  <div role="dialog" class="modalBarPosition" id="loadingSymbol">
+    <div class="modal-dialog" style="width: 55%">
+        <div class="modal-content edwloading">
+            <div class="modal-body edwloadingPad">
+              <div class="edwload-loader"></div></div>
+          </div>
+  </div>
+  </div>
+  <!--loader defination-->
+  <!--logo and year dropdown-->
+  <div class="col-lg-3">
+    <a href="javascript:void(0)" class="pad30 pull-left">
+                            <figure>
+                                <!--<img src="Images/PwcLogo.PNG" class="img-responsive">-->
+                            </figure>
+                        </a>
+  </div>
+  <!--logo and year dropdown-->
+</div>
+
+<div class="container">
+        <div class="card card-container">
+            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+            <div class="front">
+            <img id="profile-img" class="profile-img-card" src="data:image/png;base64,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" />
+            <p id="profile-name" class="profile-name-card">Sign in with your email and password</p>
+            <form class="form-signin SignInController" action="" method="post" name="myForm" onsubmit="return signIn();">
+                <span id="reauth-email" class="reauth-email"></span>
+                <label>Email</label>
+                <input id="username" name="username" oncopy="return false" onpaste="return false" oncut="return false" type="email" class="form-control inputField-customizable" placeholder="Email" required>
+                <label>Password</label>
+                <input id="password" name="password" type="password" oncopy="return false" onpaste="return false" oncut="return false" autocapitalize="none" class="form-control inputField-customizable" placeholder="Password" required>
+                <a href="javascript:void(0)" title="Forgot the password?" class="forgetPassAlignment pull-left" onclick="ForgetPassword()">
+                    Forgot the password?
+                </a>
+                <!--<input type="submit" value="Submit" class="btn btn-lg btn-primary btn-block btn-signin">-->
+                <!--<a class="btn btn-lg btn-primary btn-block btn-signin-Controller" href="javascript:void(0)" onclick="signIn()">Sign in</a>-->
+                <input type="submit" value="Sign in" class="btn btn-lg btn-primary btn-block btn-signin-Controller"  title="Sign in">
+            </form><!-- /form -->
+
+            <a href="javascript:void(0)" class="forgot-password pull-right hide" onclick="ChangePassword()">
+                Change the password?
+            </a>
+          </div>
+          <div class="back hide">
+              <div id="forgetPassword">
+              <img id="profile-img-two" class="profile-img-card" src="data:image/png;base64,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" />
+              <h1 class="fgPassToken"></h1>
+              <span class="EnterPromtMsg"></span>
+              <form class="form-signin hideController" action="" method="post" name="FgPass" onsubmit="return forgetPassAuthentication();">
+                <input id="FgPasswordUsername" name="FgPasswordUsername" oncopy="return false" onpaste="return false" oncut="return false" type="email" class="form-control inputField-customizable" placeholder="Email" required>
+                <input type="submit" value="Reset my password" class="btn btn-lg btn-primary btn-block btn-signin-Controller" title="Reset my password">
+                <a class="btn btn-lg btn-primary btn-block btn-signin-Controller padTop10" href="javascript:void(0)" title="Back" onclick="BackToFront()">Back</a>
+              </form>
+              <form class="form-signin showController hide" action="" method="post" name="FgPass1" onsubmit="return ChangePassAuthentication();">
+                  <label>Email or User Name</label>
+                  <input id="User_Name_details" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="text" name="User_Name" required="">
+                  <label>Old Password</label>
+                  <input id="old_password" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="password" name="password" required="">
+                  <input type="hidden" id="FirstTimeUserDataStore" value="" />
+                  <label>New Password</label>
+                  <input id="new_password_hidden" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="password" name="password" required="">
+                  <input type="submit" value="Change my password" class="btn btn-lg btn-primary btn-block btn-signin" title="Change my password">
+                  <a class="btn btn-lg btn-primary btn-block btn-signin padTop10" href="javascript:void(0)" title="Back" onclick="BackToFront()">Back</a>
+              </form>
+            </div>
+              <div id="codeSent" class="hide">
+                <img id="profile-img-three" class="profile-img-card" src="data:image/png;base64,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" />
+                <p>We have sent a password reset code by email to <span id="userEmailText"></span> Enter it below to reset your password.</p>
+                <form class="form-signin" action="" method="post" id="FgPassValidation" name="FgPassValidation" onsubmit="return VerificationUser();">
+                <label>Verification code</label>
+                <input id="verification_code" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="password" name="code" required="" maxlength="8" onkeypress="return isNumber(event)">
+                <label>New Password</label>
+                <input id="new_password" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="password" name="password" required="">
+                <label>Enter New Password Again</label>
+                <input id="confirmPassword" oncopy="return false" onpaste="return false" oncut="return false" class="form-control inputField-customizable" type="password" name="confirmPassword" required="">
+                <button name="reset_password" type="submit" class="btn btn-lg btn-primary btn-block btn-signin-Controller submitBtn" title="Change Password">Change Password</button>
+                <a class="btn btn-lg btn-primary btn-block btn-signin-Controller padTop10" href="javascript:void(0)" title="Back" onclick="BackToFront()">Back</a>
+              </form>
+            </div>
+          </div>
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+<script src="Scripts/bootstrap.js" type="text/javascript" ></script>
+</body>
+</html>
